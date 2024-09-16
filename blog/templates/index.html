@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Ved's Blog</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    padding: 20px;
+    line-height: 1.6;
+    color: #E0E0E0;
+  }
+
+  .header {
+    background-color: #1f1f1f;
+    color: #90caf9;
+    text-align: center;
+    padding: 20px 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .header h2 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .leftcolumn {
+    width: 100%;
+  }
+
+  .card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+  }
+
+  .card h2 {
+    font-size: 2rem;
+    color: #90caf9;
+  }
+
+  .card h5 {
+    font-size: 0.9rem;
+    color: #9e9e9e;
+    margin-bottom: 15px;
+  }
+
+  .card p {
+    font-size: 1rem;
+    color: #bdbdbd;
+  }
+
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 800px) {
+    .leftcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Ved's Blog</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    {% for post in posts reversed %}
+    <div class="card">
+      <a href="/post/{{post.id}}">
+        <h2>{{post.title}}</h2>
+        <h5>{{post.created_at}}</h5>
+        <p>{{post.body|truncatewords:20}}</p>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>
